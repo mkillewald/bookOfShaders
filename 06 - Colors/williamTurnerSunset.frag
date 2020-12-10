@@ -33,6 +33,9 @@ float bounceInOut(float t) {
 
 void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
+
+    //Compose a gradient that resembles a William Turner sunset
+
     vec3 colorA = vec3(75.0,99.0,177.0)/255.0;
     vec3 colorB = vec3(235.0,105.0,22.0)/255.0;
 
