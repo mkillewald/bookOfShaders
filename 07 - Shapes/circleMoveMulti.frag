@@ -15,28 +15,28 @@ float bounceIn(float t);
 float bounceInOut(float t);
 
 void main(){
-	vec2 st = gl_FragCoord.xy/u_resolution;
-    vec3 orange = vec3(0.8,0.5,0.2);
-    vec3 purple = vec3(0.5, 0.2, 1.0);
-    
-    // Circle exercises:
-    // What about moving this circle? 
-    // Can you move it and place different circles in a single billboard?
+  vec2 st = gl_FragCoord.xy/u_resolution;
+  vec3 orange = vec3(0.8,0.5,0.2);
+  vec3 purple = vec3(0.5, 0.2, 1.0);
+  
+  // Circle exercises:
+  // What about moving this circle? 
+  // Can you move it and place different circles in a single billboard?
 
-    vec2 center1 = vec2(abs(sin(u_time*0.5)),bounceIn(abs(fract(u_time*0.125)*2.0-1.0)));
-    vec3 circ1 = circleSmoothstep(st, center1, 0.4, 0.25)*orange;
+  vec2 center1 = vec2(abs(sin(u_time*0.5)),bounceIn(abs(fract(u_time*0.125)*2.0-1.0)));
+  vec3 circ1 = circleSmoothstep(st, center1, 0.4, 0.25)*orange;
 
-    vec2 center2 = vec2(0.5*sin(u_time*0.5)+0.5,abs(cos(u_time)));
-    vec3 circ2 = circleSmoothstep(st, center2, 0.1, 0.01)*purple;
+  vec2 center2 = vec2(0.5*sin(u_time*0.5)+0.5,abs(cos(u_time)));
+  vec3 circ2 = circleSmoothstep(st, center2, 0.1, 0.01)*purple;
 
-    vec3 color = circ1 + circ2;
+  vec3 color = circ1 + circ2;
 
-	gl_FragColor = vec4(color, 1.0);
+  gl_FragColor = vec4(color, 1.0);
 }
 
 float circleSmoothstep(in vec2 st, vec2 center, float radius, float smoothWidth) {
-    float distFromCenter = distance(st,center);
-    return smoothstep(distFromCenter,distFromCenter+smoothWidth, radius);
+  float distFromCenter = distance(st,center);
+  return smoothstep(distFromCenter,distFromCenter+smoothWidth, radius);
 }
 
 // Robert Penner's easing functions in GLSL
