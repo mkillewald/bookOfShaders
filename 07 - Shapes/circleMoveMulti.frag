@@ -6,7 +6,6 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
-float circleStep(in vec2 st, vec2 center, float radius);
 float circleSmoothstep(in vec2 st, vec2 center, float radius, float smoothWidth);
 
 // Robert Penner's easing functions in GLSL
@@ -28,15 +27,11 @@ void main(){
     vec3 circ1 = circleSmoothstep(st, center1, 0.4, 0.25)*orange;
 
     vec2 center2 = vec2(0.5*sin(u_time*0.5)+0.5,abs(cos(u_time)));
-    vec3 circ2 = circleStep(st, center2, 0.1)*purple;
+    vec3 circ2 = circleSmoothstep(st, center2, 0.1, 0.01)*purple;
 
     vec3 color = circ1 + circ2;
 
 	gl_FragColor = vec4(color, 1.0);
-}
-
-float circleStep(in vec2 st, vec2 center, float radius) {
-    return step(distance(st,center),radius);
 }
 
 float circleSmoothstep(in vec2 st, vec2 center, float radius, float smoothWidth) {
