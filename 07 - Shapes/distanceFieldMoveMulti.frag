@@ -27,6 +27,7 @@ void main(){
   // What about moving this circle? 
   // Can you move it and place different circles in a single billboard?
   // What happens if you combine distances fields together using different functions and operations?
+  // Make three compositions using this technique. If they are animated, even better!
 
   vec2 center1 = vec2(abs(sin(u_time*0.5)),bounceIn(abs(fract(u_time*0.125)*2.0-1.0)));
   vec3 circ1 = circleSmoothstep(st, center1, 0.4, 0.25)*orange;
